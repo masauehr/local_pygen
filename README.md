@@ -39,7 +39,8 @@ local_pygen/
 ├── CLAUDE.md                       # Claude Code向け作業指示
 ├── .gitignore
 ├── config/
-│   ├── config.json                 # Continue用設定テンプレート
+│   ├── config.json                 # 旧設定ファイル名（参考保存・現在は非推奨）
+│   ├── config.yaml                 # Continue用設定ファイル（現行・こちらを使用）
 │   └── README.md                   # 設定の詳細説明・適用手順
 ├── prompts/
 │   ├── system_coder.md             # システムプロンプト（標準）
@@ -80,8 +81,9 @@ VS Code 拡張機能マーケットプレイスから `Continue` を検索して
 
 ### 4. Continue の設定
 
-`config/config.json` を `~/.continue/config.json` にコピーして使用。
+`config/config.yaml` を参考に `~/.continue/config.yaml` を編集して使用。
 → 詳細は [config/README.md](config/README.md) を参照。
+> ※ `config/config.json` は旧設定ファイル名。参考として保存しているが現在は非推奨。
 
 ## 軽量モデル運用のポイント
 

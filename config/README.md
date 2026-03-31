@@ -2,12 +2,14 @@
 
 ## 概要
 
-このディレクトリの `config.json` は、VS Code Continue拡張機能用の設定テンプレートです。
-現在の Continue は `~/.continue/config.yaml` 形式で設定します。
+このディレクトリの `config.yaml` が、VS Code Continue拡張機能用の設定ファイルです。
+実際の設定は `~/.continue/config.yaml` で管理します。
+
+> ※ `config.json` は旧設定ファイル名。参考として保存していますが現在は非推奨です。
 
 ## 適用方法
 
-`config.json` を参考に `~/.continue/config.yaml` を編集してください。
+`config.yaml` を参考に `~/.continue/config.yaml` を編集してください。
 設定はファイル保存で自動反映されます。
 
 ## 設定内容
