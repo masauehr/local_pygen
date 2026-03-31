@@ -1,0 +1,21 @@
+# Ollamaモデルファイル（巨大なので除外）
+*.gguf
+*.bin
+
+# 個人設定（認証情報等を含む可能性）
+config/config.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/settings.json
+*.swp

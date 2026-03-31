@@ -1,0 +1,2 @@
+pyyaml>=6.0</content>
+<parameter name="filePath">/Users/masahiro/projects/local_pygen/requirements.txt
