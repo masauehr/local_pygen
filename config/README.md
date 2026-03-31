@@ -18,10 +18,23 @@
 
 | タイトル | モデル | 用途 | コンテキスト長 |
 |---|---|---|---|
-| Qwen2.5 Coder 1.5B | `qwen2.5-coder:1.5b` | コーディング特化（メイン） | 4096 tokens |
-| Phi4 Mini | `phi4-mini:latest` | 汎用・高性能 | 4096 tokens |
-| Phi3 Mini | `phi3:mini` | 軽量フォールバック | 2048 tokens |
-| Qwen2.5 1.5B | `qwen2.5:1.5b` | 汎用 | 4096 tokens |
+| Qwen2.5 7B | `qwen2.5:7b` | **チャットメイン・推奨** | 8192 tokens |
+| Phi4 Mini | `phi4-mini:latest` | 汎用（参考） | 4096 tokens |
+| Phi3 Mini | `phi3:mini` | 軽量（参考） | 4096 tokens |
+| Qwen2.5 1.5B | `qwen2.5:1.5b` | 超軽量（参考） | 4096 tokens |
+| Qwen2.5 Coder 1.5B | `qwen2.5-coder:1.5b` | **タブ補完専用**（チャット不可） | — |
+
+#### モデル評価結果（MacBook Air メモリ8GB での実測）
+
+| モデル | 評価 | 日本語対応 |
+|---|---|---|
+| `qwen2.5:1.5b` | ❌ 性能不十分 | △ 不安定 |
+| `qwen2.5-coder:1.5b` | ❌ 性能不十分 | △ 不安定 |
+| `phi3:mini` | ❌ 性能不十分 | ❌ 困難 |
+| `phi4-mini:latest` | ❌ 性能不十分 | △ 不安定 |
+| `qwen2.5:7b` | ✅ **実用レベルに近い** | ✅ 安定 |
+
+> メモリ8GBでは `qwen2.5:7b` が動作は重いが唯一の実用候補。
 
 ### タブ補完
 
