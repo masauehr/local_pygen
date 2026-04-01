@@ -57,7 +57,7 @@ def convert_to_continue_format(memo_config: dict) -> dict:
         "tabAutocompleteModel": {
             "title": "Autocomplete",
             "provider": "ollama",
-            "model": "qwen2.5-coder:1.5b",
+            "model": "deepseek-coder:1.3b",
             "apiBase": "http://localhost:11434"
         },
         "tabAutocompleteOptions": {

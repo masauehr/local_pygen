@@ -15,10 +15,8 @@ OLLAMA_BASE_URL = "http://localhost:11434"
 
 # 推奨モデル一覧（実環境に合わせて更新）
 RECOMMENDED_MODELS = [
-    "qwen2.5-coder:1.5b",
-    "phi4-mini:latest",
-    "phi3:mini",
-    "qwen2.5:1.5b",
+    "qwen2.5:7b",
+    "deepseek-coder:1.3b",
 ]
 
 

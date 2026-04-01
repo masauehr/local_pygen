@@ -12,7 +12,7 @@ import urllib.request
 import urllib.error
 
 OLLAMA_BASE_URL = "http://localhost:11434"
-DEFAULT_MODEL = "qwen2.5-coder:7b"
+DEFAULT_MODEL = "qwen2.5:7b"
 
 SYSTEM_PROMPT = (
     "あなたは優秀なプログラミングアシスタントです。"
