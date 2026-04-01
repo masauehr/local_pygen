@@ -19,17 +19,19 @@
 | タイトル | モデル | 用途 | コンテキスト長 |
 |---|---|---|---|
 | Qwen2.5 7B | `qwen2.5:7b` | **チャットメイン・推奨** | 8192 tokens |
+| Qwen2.5 3B | `qwen2.5:3b` | **チャットサブ** | 4096 tokens |
 | Phi4 Mini | `phi4-mini:latest` | 汎用（参考） | 4096 tokens |
 | Phi3 Mini | `phi3:mini` | 軽量（参考） | 4096 tokens |
-| Qwen2.5 1.5B | `qwen2.5:1.5b` | 超軽量（参考） | 4096 tokens |
-| Qwen2.5 Coder 1.5B | `qwen2.5-coder:1.5b` | **タブ補完専用**（チャット不可） | — |
+| DeepSeek Coder 1.3B | `deepseek-coder:1.3b` | **タブ補完専用**（チャット不可） | — |
 
 #### モデル評価結果（MacBook Air メモリ8GB での実測）
 
 | モデル | 評価 | 日本語対応 |
 |---|---|---|
 | `qwen2.5:1.5b` | ❌ 性能不十分 | △ 不安定 |
+| `qwen2.5:3b` | △ サブ利用可 | △ やや不安定 |
 | `qwen2.5-coder:1.5b` | ❌ 性能不十分 | △ 不安定 |
+| `deepseek-coder:1.3b` | — コード補完専用 | — |
 | `phi3:mini` | ❌ 性能不十分 | ❌ 困難 |
 | `phi4-mini:latest` | ❌ 性能不十分 | ❌ 日本語不十分 |
 | `qwen2.5:7b` | ✅ **実用レベルに近い** | ✅ 安定 |
