@@ -67,12 +67,11 @@ ollama serve
 ### 2. モデルのダウンロード
 
 ```bash
-# コーディング特化モデル（推奨）
-ollama pull qwen2.5-coder:7b
+# チャット用メインモデル（推奨）
+ollama pull qwen2.5:7b
 
-# 軽量モデル（低スペックPC向け）
-ollama pull qwen2.5-coder:3b
-ollama pull phi3:mini
+# タブ補完専用
+ollama pull deepseek-coder:1.3b
 ```
 
 ### 3. VS Code に Continue をインストール
