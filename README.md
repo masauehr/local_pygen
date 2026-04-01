@@ -11,7 +11,7 @@
 VS Code
   └── Continue 拡張機能
         └── Ollama（ローカルLLMサーバー）
-              └── 軽量モデル（例: codellama, qwen2.5-coder, deepseek-coder 等）
+              └── 軽量モデル（例: qwen2.5, deepseek-coder 等）
 ```
 
 ## 目的・ゴール
@@ -28,7 +28,7 @@ VS Code
 | エディタ | VS Code |
 | AI統合拡張 | [Continue](https://www.continue.dev/) |
 | LLMランタイム | [Ollama](https://ollama.com/) |
-| モデル候補 | `qwen2.5-coder`, `codellama`, `deepseek-coder`, `phi3` 等 |
+| モデル | `qwen2.5:7b`（チャット）/ `deepseek-coder:1.3b`（補完） |
 | スクリプト | Python 3.x（自動化・補助スクリプト）|
 
 ## ディレクトリ構成
@@ -38,10 +38,6 @@ local_pygen/
 ├── README.md                       # このファイル
 ├── CLAUDE.md                       # Claude Code向け作業指示
 ├── .gitignore
-├── config/
-│   ├── config.json                 # 旧設定ファイル名（参考保存・現在は非推奨）
-│   ├── config.yaml                 # Continue用設定ファイル（現行・こちらを使用）
-│   └── README.md                   # 設定の詳細説明・適用手順
 ├── prompts/
 │   ├── system_coder.md             # システムプロンプト（標準）
 │   ├── system_lightweight.md       # システムプロンプト（軽量モデル向け）
@@ -80,9 +76,38 @@ VS Code 拡張機能マーケットプレイスから `Continue` を検索して
 
 ### 4. Continue の設定
 
-`config/config.yaml` を参考に `~/.continue/config.yaml` を編集して使用。
-→ 詳細は [config/README.md](config/README.md) を参照。
-> ※ `config/config.json` は旧設定ファイル名。参考として保存しているが現在は非推奨。
+`~/.continue/config.yaml` を編集して使用。設定はファイル保存で自動反映される。
+
+## Continue 設定内容
+
+### モデル構成
+
+| モデル | 用途 | コンテキスト長 |
+|---|---|---|
+| `qwen2.5:7b` | **チャットメイン・推奨** | 8192 tokens |
+| `deepseek-coder:1.3b` | **タブ補完専用**（チャット不可） | — |
+
+### カスタムコマンド（`/` コマンド）
+
+| コマンド | 機能 |
+|---|---|
+| `/explain` | 選択コードを日本語で説明 |
+| `/fix` | バグ・エラーを修正 |
+| `/review` | コードレビュー（品質・セキュリティ等） |
+| `/test` | テストコードを生成 |
+| `/docstring` | docstring（ドキュメントコメント）を追加 |
+| `/refactor` | リファクタリング提案・実施 |
+| `/commit` | gitコミットメッセージを生成 |
+| `/proofread` | 文章添削 |
+
+### コンテキストプロバイダー（`@` 参照）
+
+| 参照 | 内容 |
+|---|---|
+| `@currentFile` | 現在開いているファイル全体 |
+| `@file` | 任意のファイルをコンテキストに追加 |
+| `@terminal` | ターミナルの最新出力 |
+| `@problems` | VS Code の Problems パネルの内容 |
 
 ## モデル評価結果（MacBook Air メモリ8GB での実測）
 
@@ -99,12 +124,20 @@ VS Code 拡張機能マーケットプレイスから `Continue` を検索して
 > **結論:** MacBook Air メモリ8GB 環境では `qwen2.5:7b` が唯一の実用候補。
 > 1.5B・3B クラスのモデルは性能・日本語対応ともに不十分。
 
-## 軽量モデル運用のポイント
+## トラブルシューティング
 
-- **コンテキスト長を絞る**: 不要な情報を含めない簡潔なプロンプト
-- **タスクを細分化**: 一度に大きなタスクを渡さず、ステップごとに指示
-- **モデル選定**: コーディングタスクには `qwen2.5-coder` 系が使えるかは今後検証
-- **システムプロンプト最適化**: 軽量モデルに合わせた短くクリアな指示
+**Ollama に接続できない場合**
+```bash
+ollama serve
+ollama list
+```
+
+**モデルが遅い・重い場合**
+- `contextLength` を小さくする（例: 4096）
+- `maxPromptTokens` を減らす（例: 256）
+
+**中国語が混入する場合（qwen系）**
+- `systemMessage` に `Do NOT use Chinese in any part of your response.` を追加済み
 
 ## 参考リンク
 
@@ -114,4 +147,4 @@ VS Code 拡張機能マーケットプレイスから `Continue` を検索して
 
 ## 状態
 
-🔧 構築中
+🔧 構築・検証中
