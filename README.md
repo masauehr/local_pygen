@@ -119,10 +119,31 @@ VS Code 拡張機能マーケットプレイスから `Continue` を検索して
 | `deepseek-coder:1.3b` | — | — | コード補完専用（タブ補完のみ） |
 | `phi3:mini` | ❌ 性能不十分 | ❌ 困難 | 日本語指示を無視することが多い |
 | `phi4-mini:latest` | ❌ 性能不十分 | ❌ 日本語不十分 | 英語タスクなら使用可能な場合あり |
-| `qwen2.5:7b` | ✅ **実用レベルに近い** | ✅ 安定 | メモリ8GBでは動作が重いが実用可能。**推奨** |
+| `qwen2.5:7b` | ✅ 実用レベルに近い | ✅ 安定 | メモリ8GBでは動作が重いが実用可能 |
+| **Bonsai 8B**（llama-server） | ✅ **最推奨** | ✅ **7bより上** | 1ビット量子化・モデルサイズ1.1GB・メモリ大幅節約 |
 
-> **結論:** MacBook Air メモリ8GB 環境では `qwen2.5:7b` が唯一の実用候補。
-> 1.5B・3B クラスのモデルは性能・日本語対応ともに不十分。
+> **結論（2026-04-06更新）:** Ollama 利用の場合は `qwen2.5:7b` が実用候補だが、**Bonsai 8B（llama-server）が最も優れた選択肢**。
+> - モデルサイズ 1.1GB（qwen2.5:7bの約1/4）でメモリを大幅に節約
+> - 日本語文章の生成品質は qwen2.5:7b を上回る
+> - ファイル作成・直接書き換え・簡単なコード生成のエージェント能力あり
+> - qwen2.5:3b より明らかに高性能
+> - ただし Ollama 非対応のため別途 llama-server が必要（`~/projects/1bit_LLM/` 参照）
+
+### Bonsai 8B との連携設定
+
+Bonsai 8B は Ollama ではなく PrismML フォーク版 llama-server で動作。Continue への接続設定は `pc_docs/manuals/pc-tips/bonsai-8b.md` を参照。
+
+```yaml
+# ~/.continue/config.yaml への追加例
+- name: Bonsai 8B（1ビット量子化・ローカル）
+  provider: openai
+  model: bonsai-8b
+  apiBase: http://localhost:8080/v1
+  apiKey: dummy
+  contextLength: 8192
+```
+
+起動: `~/projects/1bit_LLM/start_bonsai.sh`
 
 ## トラブルシューティング
 
